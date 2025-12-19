@@ -1,0 +1,833 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="dark light" />
+  <title>María Esther Hernández Ortega | Robotics & Mechatronics Engineer</title>
+  <meta name="description" content="Industrial-style CV website — Robotics & Mechatronics. Embedded systems, automation, CNC, CAD/CAM." />
+
+  <style>
+    :root{
+      /* Industrial + elegant palette */
+      --bg: #0a0f1a;
+      --panel: rgba(255,255,255,.035);
+      --panel2: rgba(255,255,255,.055);
+      --border: rgba(255,255,255,.10);
+      --text: #e7eaf1;
+      --muted: #a7b0c2;
+
+      /* “Steel blue” accent */
+      --accent: #79a6ff;
+      --accent2: #8be7ff;
+
+      --shadow: 0 18px 70px rgba(0,0,0,.50);
+      --radius: 18px;
+      --max: 1100px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background:
+        radial-gradient(1100px 540px at 15% 10%, rgba(121,166,255,.14), transparent 62%),
+        radial-gradient(900px 520px at 85% 18%, rgba(139,231,255,.10), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.03), transparent 20%),
+        var(--bg);
+      color: var(--text);
+      line-height:1.6;
+    }
+
+    a{color:inherit; text-decoration:none}
+    a:hover{text-decoration:underline; text-underline-offset:3px}
+
+    .container{max-width:var(--max); margin:0 auto; padding: 18px 18px 64px}
+
+    /* Top bar */
+    .nav{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: linear-gradient(180deg, rgba(10,15,26,.90), rgba(10,15,26,.55));
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 12px 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+    }
+    .id{
+      display:flex; align-items:center; gap:12px; min-width: 240px;
+    }
+    .mark{
+      width: 34px; height: 34px; border-radius: 10px;
+      background:
+        linear-gradient(135deg, rgba(121,166,255,.35), rgba(139,231,255,.10));
+      border: 1px solid rgba(255,255,255,.14);
+      box-shadow: 0 0 22px rgba(121,166,255,.18);
+      display:grid; place-items:center;
+      font-weight: 800;
+      letter-spacing:.5px;
+    }
+    .id b{font-size: 14px; letter-spacing:.25px}
+    .id small{display:block; color:var(--muted); font-size: 12px; line-height: 1.15}
+
+    .links{
+      display:flex; gap:10px; flex-wrap:wrap; justify-content:center;
+    }
+    .chip{
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.03);
+      padding: 8px 11px;
+      border-radius: 999px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .chip:hover{border-color: rgba(121,166,255,.55); color: var(--text); text-decoration:none}
+
+    .actions{display:flex; gap:10px; align-items:center; justify-content:flex-end; min-width: 250px}
+    .btn{
+      border:1px solid var(--border);
+      background: linear-gradient(180deg, rgba(121,166,255,.16), rgba(255,255,255,.03));
+      padding: 9px 12px;
+      border-radius: 999px;
+      cursor:pointer;
+      font-weight: 650;
+      color: var(--text);
+      display:inline-flex; align-items:center; gap:8px;
+    }
+    .btn:hover{border-color: rgba(121,166,255,.65); text-decoration:none}
+    .btn.secondary{
+      background: rgba(255,255,255,.03);
+      color: var(--muted);
+      font-weight: 600;
+    }
+    .btn.secondary:hover{border-color: rgba(139,231,255,.55); color: var(--text); text-decoration:none}
+
+    @media (max-width: 860px){
+      .id{min-width:unset}
+      .actions{min-width:unset}
+    }
+
+    /* Hero */
+    .hero{padding: 26px 0 10px}
+    .hero-card{
+      border:1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.02));
+      border-radius: calc(var(--radius) + 8px);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position: relative;
+    }
+    .hero-card:before{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        linear-gradient(90deg, transparent 0%, rgba(255,255,255,.035) 48%, transparent 100%);
+      opacity:.55;
+      pointer-events:none;
+      transform: translateX(-50%);
+      animation: sweep 10s linear infinite;
+    }
+    @keyframes sweep{
+      0%{transform: translateX(-60%)}
+      100%{transform: translateX(60%)}
+    }
+    .hero-top{
+      position:relative;
+      padding: 22px 18px 18px;
+      display:grid;
+      grid-template-columns: 160px 1fr;
+      gap: 16px;
+      align-items:center;
+    }
+    @media (max-width: 740px){
+      .hero-top{grid-template-columns:1fr; text-align:center}
+    }
+
+    .avatar{
+      width: 148px; height: 148px;
+      border-radius: 999px;
+      overflow:hidden;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.03);
+      box-shadow: 0 10px 35px rgba(0,0,0,.35);
+      margin: 0 auto;
+    }
+    .avatar img{width:100%; height:100%; object-fit:cover; display:block}
+    .avatar .ph{
+      height:100%;
+      display:grid; place-items:center;
+      color: var(--muted);
+      font-size: 12px;
+      padding: 14px;
+      text-align:center;
+    }
+
+    h1{margin:0; font-size: 34px; line-height: 1.1}
+    .subtitle{
+      margin: 8px 0 10px;
+      color: var(--muted);
+      font-weight: 650;
+      letter-spacing:.2px;
+    }
+
+    .contact{
+      display:flex; gap:10px; flex-wrap:wrap;
+      color: var(--muted);
+      margin-top: 10px;
+      justify-content: flex-start;
+    }
+    @media (max-width: 740px){
+      .contact{justify-content:center}
+    }
+    .contact a, .contact span{
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.03);
+      padding: 8px 10px;
+      border-radius: 999px;
+      font-size: 13px;
+    }
+    .contact a:hover{border-color: rgba(139,231,255,.55); color: var(--text); text-decoration:none}
+
+    .hero-bottom{
+      position:relative;
+      border-top:1px solid var(--border);
+      padding: 14px 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .social{display:flex; gap:10px; flex-wrap:wrap}
+    .social a{
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.03);
+      padding: 8px 10px;
+      border-radius: 999px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .social a:hover{border-color: rgba(121,166,255,.60); color: var(--text); text-decoration:none}
+
+    .badge{
+      color: var(--muted);
+      font-size: 13px;
+      letter-spacing: .2px;
+    }
+
+    /* Layout cards */
+    .grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 16px;
+      margin-top: 16px;
+    }
+    @media (max-width: 980px){ .grid{grid-template-columns:1fr} }
+
+    section.card{
+      border:1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border-radius: var(--radius);
+      box-shadow: 0 14px 55px rgba(0,0,0,.30);
+      overflow:hidden;
+    }
+    .inner{padding: 16px}
+
+    .section-title{
+      display:flex; align-items:baseline; justify-content:space-between; gap: 12px;
+      margin-bottom: 10px;
+    }
+    h2{
+      margin:0;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1.6px;
+      color: #dbe3ff;
+    }
+    .section-title small{color: var(--muted)}
+
+    .rule{
+      height:1px;
+      background:
+        linear-gradient(90deg, transparent, rgba(121,166,255,.35), rgba(255,255,255,.10), transparent);
+      margin: 12px 0;
+    }
+
+    .item{
+      border:1px solid var(--border);
+      background: rgba(0,0,0,.15);
+      border-radius: 14px;
+      padding: 12px;
+      margin-bottom: 10px;
+    }
+    .item:last-child{margin-bottom:0}
+    .meta{
+      display:flex; align-items:flex-start; justify-content:space-between; gap: 10px;
+      flex-wrap: wrap;
+    }
+    .where{font-weight: 800}
+    .role{color: var(--muted); font-size: 13px; margin-top: 2px}
+    .when{color: var(--muted); font-size: 13px}
+
+    ul{margin:8px 0 0 18px; padding:0}
+    li{margin:6px 0; color:#d8e2ff}
+
+    .tags{display:flex; flex-wrap:wrap; gap:8px; margin-top: 10px}
+    .tag{
+      border:1px solid var(--border);
+      background: rgba(121,166,255,.08);
+      padding: 7px 10px;
+      border-radius: 999px;
+      font-size: 12.5px;
+      color: #dbe7ff;
+    }
+    .tag.alt{background: rgba(139,231,255,.07)}
+
+    .cols{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 10px;
+    }
+    @media (max-width: 520px){ .cols{grid-template-columns:1fr} }
+
+    .mini{
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.03);
+      border-radius: 14px;
+      padding: 12px;
+      color: var(--muted);
+    }
+    .mini b{display:block; color: var(--text); margin-bottom: 4px}
+
+    /* Language blocks */
+    [data-lang]{display:none}
+    [data-lang].active{display:block}
+
+    footer{
+      margin-top: 18px;
+      color: var(--muted);
+      text-align:center;
+      font-size: 12.5px;
+    }
+
+    /* Print */
+    @media print{
+      .nav, .actions, .social, .badge{display:none !important}
+      body{background:#fff; color:#111827}
+      .hero-card, section.card, .item, .mini{box-shadow:none !important; background:#fff !important}
+      .chip, .contact a, .contact span, .tag{background:#fff !important; color:#111827 !important; border-color:#d1d5db !important}
+      a{text-decoration:none}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="nav" role="navigation" aria-label="Primary">
+    <div class="nav-inner">
+      <div class="id">
+        <div class="mark" aria-hidden="true">ME</div>
+        <div>
+          <b>María Esther Hernández Ortega</b>
+          <small>Robotics & Mechatronics Engineer</small>
+        </div>
+      </div>
+
+      <div class="links">
+        <a class="chip" href="#" onclick="goTo('profile')">Profile</a>
+        <a class="chip" href="#" onclick="goTo('experience')">Experience</a>
+        <a class="chip" href="#" onclick="goTo('projects')">Projects</a>
+        <a class="chip" href="#" onclick="goTo('education')">Education</a>
+        <a class="chip" href="#" onclick="goTo('skills')">Skills</a>
+      </div>
+
+      <div class="actions">
+        <a class="btn secondary" href="CV.pdf" download title="Put your PDF next to this file and name it CV.pdf">⬇️ PDF</a>
+        <button class="btn" id="langBtn" type="button" aria-label="Switch language">🌐 EN</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <header class="hero">
+      <div class="hero-card">
+        <div class="hero-top">
+          <div class="avatar" aria-label="Profile photo">
+            <img src="profile.jpg" alt="Profile photo" onerror="this.remove(); document.getElementById('ph').style.display='grid';" />
+            <div id="ph" class="ph" style="display:none;">Add your photo as<br><b>profile.jpg</b></div>
+          </div>
+
+          <div>
+            <h1>María Esther Hernández Ortega</h1>
+            <div class="subtitle">Robotics & Mechatronics Engineer</div>
+
+            <div class="contact" aria-label="Contact details">
+              <span>📍 Zacatecas, Mexico</span>
+              <a href="tel:+524921618803">📞 +52 492 161 8803</a>
+              <a href="mailto:mariestherhernandezortega@gmail.com">✉️ mariestherhernandezortega@gmail.com</a>
+            </div>
+
+            <div class="tags" aria-label="Highlights">
+              <span class="tag alt">Industrial Automation</span>
+              <span class="tag">Embedded Systems</span>
+              <span class="tag alt">CNC Plasma Cutting</span>
+              <span class="tag">Microcontrollers (Arduino / ESP32 / Raspberry Pi Pico)</span>
+              <span class="tag alt">CAD/CAM (AutoCAD · SolidWorks)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-bottom">
+          <div class="social" aria-label="Links">
+            <!-- Replace with your real links if you have them -->
+            <a href="https://github.com/38195214-cell" target="_blank" rel="noreferrer">GitHub</a>
+            <a href="https://www.linkedin.com/in/mariesther-hernandez-ortega" target="_blank" rel="noreferrer">LinkedIn</a>
+          </div>
+          <div class="badge">Industrial · Manufacturing · Automation · Embedded</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- EN -->
+    <div data-lang="en" class="active">
+      <div class="grid">
+        <main>
+          <section class="card" id="profile">
+            <div class="inner">
+              <div class="section-title">
+                <h2>Professional Profile</h2>
+                <small>Summary</small>
+              </div>
+              <p style="margin:0; color:#d9e4ff;">
+                Robotics and Mechatronics Engineering student with strong experience in embedded systems development,
+                microcontroller-based device control, and process automation. Highly responsible, team-oriented, and
+                committed to continuous improvement, focused on delivering practical, efficient, high-impact solutions.
+              </p>
+            </div>
+          </section>
+
+          <section class="card" id="experience" style="margin-top:16px;">
+            <div class="inner">
+              <div class="section-title">
+                <h2>Experience</h2>
+                <small>Hands-on work</small>
+              </div>
+              <div class="rule"></div>
+
+              <div class="item">
+                <div class="meta">
+                  <div>
+                    <div class="where">Labsol Network (Council of Science, Technology and Innovation of Zacatecas)</div>
+                    <div class="role">Social Service · Zacatecas, Zacatecas</div>
+                  </div>
+                  <div class="when">Oct 2024 — May 2025</div>
+                </div>
+                <ul>
+                  <li>Developed interactive systems for the reuse of stationary bicycles to promote physical activity in institutional environments.</li>
+                  <li>Designed and implemented an LED race system controlled by spinning bikes, integrating Arduino microcontrollers, sensors, and actuators using OOP in C++.</li>
+                  <li>Optimized code for improved performance; managed tasks and timelines to deliver a functional project on schedule.</li>
+                </ul>
+              </div>
+
+              <div class="item">
+                <div class="meta">
+                  <div>
+                    <div class="where">VEIMAZ (Agricultural Machinery Workshop)</div>
+                    <div class="role">Engineering & Automation · Col. Hidalgo, Sombrerete, Zacatecas</div>
+                  </div>
+                  <div class="when">May 2025 — Aug 2025</div>
+                </div>
+                <ul>
+                  <li>Operated and controlled a CNC plasma cutting machine.</li>
+                  <li>Designed parts and cutting paths in AutoCAD for manufacturing agricultural implements.</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+
+          <section class="card" id="projects" style="margin-top:16px;">
+            <div class="inner">
+              <div class="section-title">
+                <h2>Featured Projects</h2>
+                <small>Academic & Technical</small>
+              </div>
+              <div class="rule"></div>
+
+              <div class="item">
+                <div class="where">IoT-Based Home Fire Detection and Control System</div>
+                <ul>
+                  <li>Development of an intelligent system for early detection and mitigation of residential fires based on Internet of Things (IoT) technology.</li>
+                  <li>Implementation of a cloud-based database using Microsoft Azure for real-time data storage and monitoring.</li>
+                  <li>Development of the user interface and data processing using Edge Impulse.</li>
+                  <li>Design of the physical system using flame, gas, and temperature sensors.</li>
+                  <li>Integration of a water pump connected directly to the household water tank for automatic fire suppression.</li>
+                  <li>Use of servo motors to automatically close windows, reducing oxygen supply and preventing fire propagation.</li>
+                  <li>Full system control using an ESP32 microcontroller.</li>
+                </ul>
+              </div>
+
+              <div class="item">
+                <div class="where">Mobile Application Connected to Web Services</div>
+                <ul>
+                  <li>Development of a mobile application with web connectivity.</li>
+                  <li>Retrieval, processing, and visualization of data from a JSON-formatted database.</li>
+                  <li>Implementation of efficient data-handling and processing logic.</li>
+                </ul>
+              </div>
+
+              <div class="item">
+                <div class="where">PCB Design and Development for Line-Following Robot</div>
+                <ul>
+                  <li>End-to-end printed circuit board (PCB) design from scratch.</li>
+                  <li>Integration of an Arduino Nano microcontroller, H-bridge, and infrared sensor array.</li>
+                  <li>Design focused on optimized motion control and accurate line tracking.</li>
+                </ul>
+              </div>
+
+              <div class="item">
+                <div class="where">FPGA-Based Anti-Theft Security System</div>
+                <ul>
+                  <li>Development of a security system using a Basys 3 FPGA.</li>
+                  <li>Programming in Verilog using the Vivado development environment.</li>
+                  <li>Implementation of an authentication system based on fingerprint recognition, emulating password entry on a safe.</li>
+                  <li>Activation of a mobile alert system to notify the owner in case of unauthorized access.</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+
+          <section class="card" id="education" style="margin-top:16px;">
+            <div class="inner">
+              <div class="section-title">
+                <h2>Education</h2>
+                <small>Academic background</small>
+              </div>
+              <div class="rule"></div>
+
+              <div class="item">
+                <div class="meta">
+                  <div>
+                    <div class="where">Autonomous University of Zacatecas</div>
+                    <div class="role">B.S. in Robotics and Mechatronics Engineering · Zacatecas, Zacatecas</div>
+                  </div>
+                  <div class="when">Aug 2021 — Present</div>
+                </div>
+              </div>
+
+              <div class="item">
+                <div class="meta">
+                  <div>
+                    <div class="where">Prepa II UAZ</div>
+                    <div class="role">High School — Physics & Mathematics</div>
+                  </div>
+                  <div class="when">2018 — 2021</div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
+
+        <aside>
+          <section class="card" id="skills">
+            <div class="inner">
+              <div class="section-title">
+                <h2>Technical Skills</h2>
+                <small>Toolset</small>
+              </div>
+              <div class="rule"></div>
+
+              <div class="cols">
+                <div class="mini"><b>Programming</b>Python, MicroPython, C, C++, Verilog (FPGA), HTML</div>
+                <div class="mini"><b>Embedded / Control</b>Arduino, ESP32, Raspberry Pi Pico, Sensors/Actuators, PLCs, Node-RED, Edge Impulse</div>
+                <div class="mini"><b>CAD / Electronics</b>AutoCAD, SolidWorks, Altium Designer, Proteus, Multisim</div>
+                <div class="mini"><b>Tools / Cloud</b>Visual Studio, Microsoft Office, MATLAB, Microsoft Azure</div>
+              </div>
+
+              <div class="rule"></div>
+              <div class="section-title">
+                <h2>Courses & Certifications</h2>
+                <small>Selected</small>
+              </div>
+              <div class="item" style="margin-bottom:0;">
+                <ul>
+                  <li>Advanced Course in Applied Robotics — STPS (Diploma of Excellence)</li>
+                  <li>Python — STPS (Diploma of Excellence)</li>
+                  <li>Introduction to Desktop Development with .NET — UAZ</li>
+                  <li>Google AI Essentials — Coursera</li>
+                </ul>
+              </div>
+
+              <div class="rule"></div>
+              <div class="section-title">
+                <h2>Languages</h2>
+                <small>Proficiency</small>
+              </div>
+              <div class="cols">
+                <div class="mini"><b>Spanish</b>Native</div>
+                <div class="mini"><b>English</b>Intermediate</div>
+              </div>
+
+              <div class="rule"></div>
+              <div class="section-title">
+                <h2>References</h2>
+                <small>Contacts</small>
+              </div>
+              <div class="item" style="margin-bottom:10px;">
+                <div class="where">ITIC. Alfonso Rafael Solís Rangel</div>
+                <div class="role">+52 458 126 3350</div>
+              </div>
+              <div class="item" style="margin-bottom:0;">
+                <div class="where">Eng. Marco Hernández González</div>
+                <div class="role">Owner, VEIMAZ · +52 433 108 3997</div>
+              </div>
+            </div>
+          </section>
+        </aside>
+      </div>
+    </div>
+
+    <!-- ES -->
+    <div data-lang="es">
+      <div class="grid">
+        <main>
+          <section class="card" id="profile-es">
+            <div class="inner">
+              <div class="section-title">
+                <h2>Perfil Profesional</h2>
+                <small>Resumen</small>
+              </div>
+              <p style="margin:0; color:#d9e4ff;">
+                Estudiante de Ingeniería en Robótica y Mecatrónica con sólida experiencia en sistemas embebidos,
+                control con microcontroladores y automatización de procesos. Responsable, orientada a resultados y
+                comprometida con la mejora continua, enfocada en soluciones prácticas, eficientes y de alto impacto.
+              </p>
+            </div>
+          </section>
+
+          <section class="card" id="experience-es" style="margin-top:16px;">
+            <div class="inner">
+              <div class="section-title">
+                <h2>Experiencia</h2>
+                <small>Trabajo práctico</small>
+              </div>
+              <div class="rule"></div>
+
+              <div class="item">
+                <div class="meta">
+                  <div>
+                    <div class="where">Labsol Network (Consejo de Ciencia, Tecnología e Innovación de Zacatecas)</div>
+                    <div class="role">Servicio Social · Zacatecas, Zacatecas</div>
+                  </div>
+                  <div class="when">Oct 2024 — May 2025</div>
+                </div>
+                <ul>
+                  <li>Desarrollo de sistemas interactivos para reutilización de bicicletas estáticas, promoviendo actividad física en entornos institucionales.</li>
+                  <li>Diseño e implementación de un sistema de carrera con LEDs controlado por bicicletas, integrando Arduino, sensores y actuadores con POO en C++.</li>
+                  <li>Optimización de código para mejorar desempeño; gestión de tareas y tiempos para entregar el proyecto en forma y fecha.</li>
+                </ul>
+              </div>
+
+              <div class="item">
+                <div class="meta">
+                  <div>
+                    <div class="where">VEIMAZ (Taller de maquinaria agrícola)</div>
+                    <div class="role">Ingeniería y Automatización · Col. Hidalgo, Sombrerete, Zacatecas</div>
+                  </div>
+                  <div class="when">May 2025 — Aug 2025</div>
+                </div>
+                <ul>
+                  <li>Operación y control de máquina CNC de corte por plasma.</li>
+                  <li>Diseño de piezas y trayectorias de corte en AutoCAD para fabricación de implementos agrícolas.</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+
+          <section class="card" id="projects-es" style="margin-top:16px;">
+            <div class="inner">
+              <div class="section-title">
+                <h2>Proyectos Destacados</h2>
+                <small>Académicos y Técnicos</small>
+              </div>
+              <div class="rule"></div>
+
+              <div class="item">
+                <div class="where">Sistema IoT de Detección y Control de Incendios Domésticos</div>
+                <ul>
+                  <li>Desarrollo de un sistema inteligente para la detección temprana y mitigación de incendios residenciales basado en tecnología IoT.</li>
+                  <li>Implementación de una base de datos en la nube con Microsoft Azure para almacenamiento y monitoreo en tiempo real.</li>
+                  <li>Desarrollo de la interfaz de usuario y procesamiento de datos mediante Edge Impulse.</li>
+                  <li>Diseño del sistema físico utilizando sensores de flama, gas y temperatura.</li>
+                  <li>Integración de una bomba de agua conectada directamente al tinaco para supresión automática de incendios.</li>
+                  <li>Uso de servomotores para el cierre automático de ventanas, reduciendo el suministro de oxígeno y la propagación del fuego.</li>
+                  <li>Control total del sistema mediante un microcontrolador ESP32.</li>
+                </ul>
+              </div>
+
+              <div class="item">
+                <div class="where">Aplicación Móvil Conectada a Servicios Web</div>
+                <ul>
+                  <li>Desarrollo de una aplicación móvil con conectividad web.</li>
+                  <li>Obtención, procesamiento y visualización de datos desde una base de datos en formato JSON.</li>
+                  <li>Implementación de lógica eficiente para el manejo y procesamiento de datos.</li>
+                </ul>
+              </div>
+
+              <div class="item">
+                <div class="where">Diseño y Desarrollo de PCB para Robot Seguidor de Línea</div>
+                <ul>
+                  <li>Diseño completo de una tarjeta electrónica (PCB) desde cero.</li>
+                  <li>Integración de microcontrolador Arduino Nano, puente H y arreglo de sensores infrarrojos.</li>
+                  <li>Diseño enfocado en control de movimiento optimizado y seguimiento preciso de línea.</li>
+                </ul>
+              </div>
+
+              <div class="item">
+                <div class="where">Sistema de Seguridad Antirrobo Basado en FPGA</div>
+                <ul>
+                  <li>Desarrollo de un sistema de seguridad utilizando FPGA Basys 3.</li>
+                  <li>Programación en Verilog usando el entorno de desarrollo Vivado.</li>
+                  <li>Implementación de un sistema de autenticación mediante reconocimiento de huella, simulando ingreso de contraseña en una caja fuerte.</li>
+                  <li>Activación de un sistema de alerta móvil para notificar al propietario ante accesos no autorizados.</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+
+          <section class="card" id="education-es" style="margin-top:16px;">
+            <div class="inner">
+              <div class="section-title">
+                <h2>Educación</h2>
+                <small>Formación</small>
+              </div>
+              <div class="rule"></div>
+
+              <div class="item">
+                <div class="meta">
+                  <div>
+                    <div class="where">Universidad Autónoma de Zacatecas</div>
+                    <div class="role">Ing. en Robótica y Mecatrónica · Zacatecas, Zacatecas</div>
+                  </div>
+                  <div class="when">Ago 2021 — Actual</div>
+                </div>
+              </div>
+
+              <div class="item">
+                <div class="meta">
+                  <div>
+                    <div class="where">Prepa II UAZ</div>
+                    <div class="role">Bachillerato Físico–Matemático</div>
+                  </div>
+                  <div class="when">2018 — 2021</div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
+
+        <aside>
+          <section class="card" id="skills-es">
+            <div class="inner">
+              <div class="section-title">
+                <h2>Habilidades Técnicas</h2>
+                <small>Herramientas</small>
+              </div>
+              <div class="rule"></div>
+
+              <div class="cols">
+                <div class="mini"><b>Programación</b>Python, MicroPython, C, C++, Verilog (FPGA), HTML</div>
+                <div class="mini"><b>Embebidos / Control</b>Arduino, ESP32, Raspberry Pi Pico, Sensores/Actuadores, PLCs, Node-RED, Edge Impulse</div>
+                <div class="mini"><b>CAD / Electrónica</b>AutoCAD, SolidWorks, Altium Designer, Proteus, Multisim</div>
+                <div class="mini"><b>Herramientas / Nube</b>Visual Studio, Microsoft Office, MATLAB, Microsoft Azure</div>
+              </div>
+
+              <div class="rule"></div>
+              <div class="section-title">
+                <h2>Cursos y certificaciones</h2>
+                <small>Selección</small>
+              </div>
+              <div class="item" style="margin-bottom:0;">
+                <ul>
+                  <li>Curso Avanzado de Robótica Aplicada — STPS (Diploma de Excelencia)</li>
+                  <li>Python — STPS (Diploma de Excelencia)</li>
+                  <li>Introducción al desarrollo de escritorio con .NET — UAZ</li>
+                  <li>Google AI Essentials — Coursera</li>
+                </ul>
+              </div>
+
+              <div class="rule"></div>
+              <div class="section-title">
+                <h2>Idiomas</h2>
+                <small>Nivel</small>
+              </div>
+              <div class="cols">
+                <div class="mini"><b>Español</b>Nativo</div>
+                <div class="mini"><b>Inglés</b>Intermedio</div>
+              </div>
+
+              <div class="rule"></div>
+              <div class="section-title">
+                <h2>Referencias</h2>
+                <small>Contactos</small>
+              </div>
+              <div class="item" style="margin-bottom:10px;">
+                <div class="where">ITIC. Alfonso Rafael Solís Rangel</div>
+                <div class="role">+52 458 126 3350</div>
+              </div>
+              <div class="item" style="margin-bottom:0;">
+                <div class="where">Ing. Marco Hernández González</div>
+                <div class="role">Propietario, VEIMAZ · +52 433 108 3997</div>
+              </div>
+            </div>
+          </section>
+        </aside>
+      </div>
+    </div>
+
+    <footer>
+      © 2025 María Esther Hernández Ortega · Industrial CV Website
+    </footer>
+  </div>
+
+  <script>
+    const langBtn = document.getElementById('langBtn');
+    const blocks = Array.from(document.querySelectorAll('[data-lang]'));
+
+    function setLang(lang){
+      blocks.forEach(b => b.classList.toggle('active', b.getAttribute('data-lang') === lang));
+      document.documentElement.lang = lang;
+      langBtn.textContent = lang === 'en' ? '🌐 EN' : '🌐 ES';
+      langBtn.setAttribute('aria-label', lang === 'en' ? 'Switch language to Spanish' : 'Cambiar idioma a inglés');
+      localStorage.setItem('cv_lang', lang);
+    }
+
+    const saved = localStorage.getItem('cv_lang');
+    setLang(saved === 'es' ? 'es' : 'en');
+
+    langBtn.addEventListener('click', () => {
+      const current = document.documentElement.lang === 'es' ? 'es' : 'en';
+      setLang(current === 'en' ? 'es' : 'en');
+    });
+  
+  function goTo(section) {
+    const lang = document.documentElement.lang || 'en';
+    const id = lang === 'es' ? `${section}-es` : section;
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+</script>
+
+</body>
+</html>
