@@ -1,0 +1,635 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="dark light" />
+  <title>Portafolio | María Esther Hernández Ortega</title>
+  <meta name="description" content="Digital CV website for María Esther Hernández Ortega — Robotics and Mechatronics Engineer specialized in embedded systems, automation, IoT, AI and CAD/CAM." />
+
+  <style>
+    :root{
+      --bg: #07111f;
+      --bg2:#0b1730;
+      --panel: rgba(255,255,255,.075);
+      --panel2: rgba(255,255,255,.11);
+      --border: rgba(255,255,255,.16);
+      --text: #eef5ff;
+      --muted: #b5c6dc;
+
+      --accent: #38bdf8;
+      --accent2: #a855f7;
+      --accent3: #22c55e;
+      --warm:#f59e0b;
+
+      --shadow: 0 22px 80px rgba(0,0,0,.42);
+      --radius: 24px;
+      --max: 1180px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background:
+        radial-gradient(900px 520px at 12% 8%, rgba(56,189,248,.24), transparent 62%),
+        radial-gradient(760px 460px at 88% 12%, rgba(168,85,247,.21), transparent 58%),
+        radial-gradient(700px 420px at 72% 85%, rgba(34,197,94,.12), transparent 58%),
+        linear-gradient(135deg, var(--bg), var(--bg2) 45%, #100b25);
+      color: var(--text);
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+
+    body:before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:.18;
+      background-image:
+        linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: linear-gradient(to bottom, black 0%, transparent 85%);
+    }
+
+    body:after{
+      content:"";
+      position:fixed;
+      inset:-30%;
+      pointer-events:none;
+      background:
+        conic-gradient(from 180deg at 50% 50%, transparent, rgba(56,189,248,.06), transparent, rgba(168,85,247,.07), transparent);
+      animation: rotateGlow 24s linear infinite;
+      opacity:.65;
+      z-index:-1;
+    }
+    @keyframes rotateGlow{to{transform:rotate(360deg)}}
+
+    a{color:inherit; text-decoration:none}
+    a:hover{text-decoration:underline; text-underline-offset:3px}
+
+    .container{max-width:var(--max); margin:0 auto; padding: 20px 20px 72px}
+
+    .nav{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(180deg, rgba(7,17,31,.92), rgba(7,17,31,.62));
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 13px 20px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+    }
+    .id{
+      display:flex; align-items:center; gap:12px; min-width: 250px;
+    }
+    .mark{
+      width: 40px; height: 40px; border-radius: 14px;
+      background:
+        linear-gradient(135deg, rgba(56,189,248,.9), rgba(168,85,247,.76));
+      border: 1px solid rgba(255,255,255,.24);
+      box-shadow: 0 0 30px rgba(56,189,248,.32);
+      display:grid; place-items:center;
+      font-weight: 900;
+      letter-spacing:.8px;
+      color:white;
+    }
+    .id b{font-size: 14px; letter-spacing:.25px}
+    .id small{display:block; color:var(--muted); font-size: 12px; line-height: 1.15}
+
+    .links{
+      display:flex; gap:9px; flex-wrap:wrap; justify-content:center;
+    }
+    .chip{
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.055);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      color: var(--muted);
+      transition:.22s ease;
+    }
+    .chip:hover{
+      transform:translateY(-1px);
+      border-color: rgba(56,189,248,.65);
+      color: var(--text);
+      text-decoration:none;
+      box-shadow:0 0 24px rgba(56,189,248,.12);
+    }
+
+    .actions{display:flex; gap:10px; align-items:center; justify-content:flex-end; min-width: 230px}
+    .btn{
+      border:1px solid rgba(255,255,255,.20);
+      background: linear-gradient(135deg, rgba(56,189,248,.28), rgba(168,85,247,.22));
+      padding: 9px 13px;
+      border-radius: 999px;
+      cursor:pointer;
+      font-weight: 750;
+      color: var(--text);
+      display:inline-flex; align-items:center; gap:8px;
+      box-shadow:0 8px 30px rgba(56,189,248,.12);
+      transition:.22s ease;
+    }
+    .btn:hover{transform:translateY(-1px); border-color: rgba(56,189,248,.75); text-decoration:none}
+    .btn.secondary{
+      background: rgba(255,255,255,.055);
+      color: var(--muted);
+      font-weight: 650;
+    }
+
+    @media (max-width: 900px){
+      .nav-inner{align-items:flex-start; flex-direction:column}
+      .id,.actions{min-width:unset}
+      .actions{width:100%; justify-content:flex-start}
+    }
+
+    .hero{padding: 28px 0 12px}
+    .hero-card{
+      border:1px solid rgba(255,255,255,.18);
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.13), rgba(255,255,255,.045)),
+        linear-gradient(90deg, rgba(56,189,248,.10), rgba(168,85,247,.08));
+      border-radius: calc(var(--radius) + 10px);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position: relative;
+    }
+    .hero-card:before{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(56,189,248,.22), transparent 28%),
+        radial-gradient(circle at 78% 24%, rgba(168,85,247,.22), transparent 24%),
+        linear-gradient(90deg, transparent 0%, rgba(255,255,255,.055) 48%, transparent 100%);
+      opacity:.72;
+      pointer-events:none;
+    }
+    .hero-card:after{
+      content:"⚙";
+      position:absolute;
+      right:28px;
+      top:18px;
+      font-size:130px;
+      line-height:1;
+      color:rgba(255,255,255,.055);
+      animation: gear 18s linear infinite;
+      pointer-events:none;
+    }
+    @keyframes gear{to{transform:rotate(360deg)}}
+
+    .hero-top{
+      position:relative;
+      padding: 28px 24px 22px;
+      display:grid;
+      grid-template-columns: 172px 1fr;
+      gap: 22px;
+      align-items:center;
+    }
+    @media (max-width: 740px){
+      .hero-top{grid-template-columns:1fr; text-align:center}
+    }
+
+    .avatar{
+      width: 158px; height: 158px;
+      border-radius: 999px;
+      overflow:hidden;
+      border: 2px solid rgba(56,189,248,.42);
+      background:
+        radial-gradient(circle at 35% 30%, rgba(56,189,248,.35), transparent 35%),
+        linear-gradient(135deg, rgba(168,85,247,.20), rgba(255,255,255,.05));
+      box-shadow: 0 14px 45px rgba(0,0,0,.38), 0 0 38px rgba(56,189,248,.16);
+      margin: 0 auto;
+      position:relative;
+    }
+    .avatar:before{
+      content:"";
+      position:absolute;
+      inset:-8px;
+      border-radius:inherit;
+      border:1px dashed rgba(255,255,255,.22);
+      animation: gear 20s linear infinite reverse;
+    }
+    .avatar img{width:100%; height:100%; object-fit:cover; display:block}
+    .avatar .ph{
+      height:100%;
+      display:grid; place-items:center;
+      color: var(--muted);
+      font-size: 12px;
+      padding: 14px;
+      text-align:center;
+    }
+
+    h1{
+      margin:0;
+      font-size: clamp(32px, 5vw, 54px);
+      line-height: 1.02;
+      letter-spacing:-1.6px;
+    }
+    .subtitle{
+      margin: 10px 0 12px;
+      color: #d8e7ff;
+      font-weight: 750;
+      letter-spacing:.25px;
+      font-size: 18px;
+    }
+
+    .robot-strip{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin:12px 0 0;
+    }
+    .robot-icon{
+      width:44px;
+      height:44px;
+      display:grid;
+      place-items:center;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.16);
+      background:rgba(255,255,255,.075);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.08);
+      font-size:21px;
+    }
+
+    .contact{
+      display:flex; gap:10px; flex-wrap:wrap;
+      color: var(--muted);
+      margin-top: 12px;
+      justify-content: flex-start;
+    }
+    @media (max-width: 740px){
+      .contact{justify-content:center}
+      .robot-strip{justify-content:center}
+    }
+    .contact a, .contact span{
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.065);
+      padding: 8px 10px;
+      border-radius: 999px;
+      font-size: 13px;
+    }
+    .contact a:hover{border-color: rgba(56,189,248,.7); color: var(--text); text-decoration:none}
+
+    .hero-bottom{
+      position:relative;
+      border-top:1px solid var(--border);
+      padding: 15px 22px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+      background:rgba(0,0,0,.13);
+    }
+    .social{display:flex; gap:10px; flex-wrap:wrap}
+    .social a{
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.06);
+      padding: 8px 11px;
+      border-radius: 999px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .social a:hover{border-color: rgba(168,85,247,.75); color: var(--text); text-decoration:none}
+    .badge{
+      color: var(--muted);
+      font-size: 13px;
+      letter-spacing: .2px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(320px, .75fr);
+      gap: 18px;
+      margin-top: 18px;
+    }
+    @media (max-width: 980px){ .grid{grid-template-columns:1fr} }
+
+    section.card{
+      border:1px solid var(--border);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.045));
+      border-radius: var(--radius);
+      box-shadow: 0 18px 60px rgba(0,0,0,.28);
+      overflow:hidden;
+      position:relative;
+    }
+    section.card:before{
+      content:"";
+      position:absolute;
+      left:0; top:0; bottom:0;
+      width:4px;
+      background:linear-gradient(180deg, var(--accent), var(--accent2), var(--accent3));
+      opacity:.9;
+    }
+    .inner{padding: 18px}
+
+    .section-title{
+      display:flex; align-items:baseline; justify-content:space-between; gap: 12px;
+      margin-bottom: 10px;
+    }
+    h2{
+      margin:0;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1.8px;
+      color: #e7f0ff;
+    }
+    .section-title small{color: var(--muted)}
+
+    .rule{
+      height:1px;
+      background:
+        linear-gradient(90deg, transparent, rgba(56,189,248,.55), rgba(168,85,247,.42), transparent);
+      margin: 12px 0;
+    }
+
+    .item{
+      border:1px solid var(--border);
+      background: rgba(0,0,0,.17);
+      border-radius: 18px;
+      padding: 14px;
+      margin-bottom: 12px;
+      transition:.22s ease;
+      position:relative;
+      overflow:hidden;
+    }
+    .item:before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: radial-gradient(circle at 0% 0%, rgba(56,189,248,.10), transparent 34%);
+      pointer-events:none;
+    }
+    .item:hover{
+      transform:translateY(-2px);
+      border-color:rgba(56,189,248,.38);
+      box-shadow:0 12px 30px rgba(0,0,0,.22);
+    }
+    .item:last-child{margin-bottom:0}
+    .meta{
+      display:flex; align-items:flex-start; justify-content:space-between; gap: 10px;
+      flex-wrap: wrap;
+      position:relative;
+    }
+    .where{font-weight: 850; color:#ffffff}
+    .role{color: var(--muted); font-size: 13px; margin-top: 2px}
+    .when{
+      color: #d6e5ff;
+      font-size: 12.5px;
+      border:1px solid rgba(255,255,255,.14);
+      padding:5px 9px;
+      border-radius:999px;
+      background:rgba(56,189,248,.08);
+    }
+
+    ul{margin:8px 0 0 18px; padding:0; position:relative}
+    li{margin:6px 0; color:#dce9ff}
+    li::marker{color:var(--accent)}
+
+    .tags{display:flex; flex-wrap:wrap; gap:8px; margin-top: 12px}
+    .tag{
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(56,189,248,.12);
+      padding: 7px 10px;
+      border-radius: 999px;
+      font-size: 12.5px;
+      color: #e1f3ff;
+    }
+    .tag.alt{background: rgba(168,85,247,.12)}
+    .tag.green{background: rgba(34,197,94,.12)}
+
+    .cols{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 10px;
+    }
+    @media (max-width: 520px){ .cols{grid-template-columns:1fr} }
+
+    .mini{
+      border:1px solid var(--border);
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.035));
+      border-radius: 18px;
+      padding: 13px;
+      color: var(--muted);
+      min-height:86px;
+    }
+    .mini b{display:block; color: var(--text); margin-bottom: 5px}
+
+    [data-lang]{display:none}
+    [data-lang].active{display:block}
+
+    footer{
+      margin-top: 20px;
+      color: var(--muted);
+      text-align:center;
+      font-size: 12.5px;
+    }
+
+    @media print{
+      .nav, .actions, .social, .badge, .robot-strip{display:none !important}
+      body{background:#fff; color:#111827}
+      body:before, body:after, .hero-card:after, .avatar:before, section.card:before{display:none !important}
+      .hero-card, section.card, .item, .mini{box-shadow:none !important; background:#fff !important}
+      .chip, .contact a, .contact span, .tag{background:#fff !important; color:#111827 !important; border-color:#d1d5db !important}
+      a{text-decoration:none}
+    }
+  </style>
+</head>
+<body>
+  <div class="nav" role="navigation" aria-label="Primary">
+    <div class="nav-inner">
+      <div class="id">
+        <div class="mark" aria-hidden="true">ME</div>
+        <div>
+          <b>María Esther Hernández Ortega</b>
+          <small>Robotics & Mechatronics Engineer</small>
+        </div>
+      </div>
+      <div class="links">
+        <a class="chip" href="#" onclick="goTo('experience')">Experience</a>
+        <a class="chip" href="#" onclick="goTo('projects')">Projects</a>
+        <a class="chip" href="#" onclick="goTo('education')">Education</a>
+        <a class="chip" href="#" onclick="goTo('skills')">Skills</a>
+      </div>
+      <div class="actions">
+        <a class="btn secondary" href="CV.pdf" download title="Place your PDF next to this file and name it CV.pdf">⬇️ PDF</a>
+        <button class="btn" id="langBtn" type="button" aria-label="Switch language">🌐 EN</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <header class="hero">
+      <div class="hero-card">
+        <div class="hero-top">
+          <div class="avatar" aria-label="Profile photo">
+            <img src="profile.jpg" alt="Profile photo" onerror="this.remove(); document.getElementById('ph').style.display='grid';" />
+            <div id="ph" class="ph" style="display:none;">Add your photo as<br><b>profile.jpg</b></div>
+          </div>
+          <div>
+            <h1>María Esther Hernández Ortega</h1>
+            <div class="subtitle">Robotics & Mechatronics Engineer · Degree in Process</div>
+            <p class="summary" data-lang-summary="en">Recently graduated Robotics and Mechatronics Engineer with strong knowledge in embedded systems, microcontroller-based device control and process automation. Focused on developing practical, efficient and high-impact engineering solutions.</p>
+            <p class="summary" data-lang-summary="es" style="display:none;">Ingeniera en Robótica y Mecatrónica recién egresada con sólida formación en sistemas embebidos, control mediante microcontroladores y automatización de procesos. Enfocada en desarrollar soluciones prácticas, eficientes y de alto impacto.</p>
+            <div class="contact" aria-label="Contact details">
+              <span>📍 Zacatecas, Mexico</span>
+              <a href="tel:+524921618803">📞 +52 492 161 8803</a>
+              <a href="mailto:mariestherhernandezortega@gmail.com">✉️ mariestherhernandezortega@gmail.com</a>
+            </div>
+            <div class="tags" aria-label="Highlights">
+              <span class="tag alt">Embedded Systems</span>
+              <span class="tag">Industrial Automation</span>
+              <span class="tag alt">IoT</span>
+              <span class="tag">Artificial Intelligence</span>
+              <span class="tag alt">CAD/CAM</span>
+              <span class="tag">CNC Plasma Cutting</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-bottom">
+          <div class="social" aria-label="Links">
+            <a href="https://github.com/38195214-cell" target="_blank" rel="noreferrer">GitHub</a>
+            <a href="https://38195214-cell.github.io" target="_blank" rel="noreferrer">Portfolio</a>
+            <a href="https://www.linkedin.com/in/mariesther-hernandez-ortega" target="_blank" rel="noreferrer">LinkedIn</a>
+          </div>
+          <div class="badge">Industrial · Manufacturing · Automation · Embedded · AI</div>
+        </div>
+      </div>
+    </header>
+
+    <div data-lang="en" class="active">
+      <div class="grid">
+        <main>
+          <section class="card" id="experience">
+            <div class="inner">
+              <div class="section-title"><h2>Professional Experience</h2><small>Hands-on work</small></div>
+              <div class="rule"></div>
+              <div class="item">
+                <div class="meta"><div><div class="where">Labsol (Free Software Laboratory)</div><div class="role">Robotics Project Development – Social Service · Zacatecas, Zacatecas</div></div><div class="when">Oct 2024 — May 2025</div></div>
+                <ul><li>Developed a robotics project for the Free Software Laboratory.</li><li>Implemented an interactive RGB LED racing system using stationary bicycles through encoder signal processing.</li><li>Integrated sensors, microcontrollers and real-time control programming.</li></ul>
+              </div>
+              <div class="item">
+                <div class="meta"><div><div class="where">VEIMAZ (Agricultural Machinery Workshop)</div><div class="role">Full Stack Developer – Engineering and Automation · Sombrerete, Zacatecas</div></div><div class="when">May 2025 — Aug 2025</div></div>
+                <ul><li>Operated and controlled CNC plasma cutting machines.</li><li>Designed mechanical parts and cutting paths using AutoCAD.</li><li>Participated in automation and manufacturing processes.</li></ul>
+              </div>
+              <div class="item">
+                <div class="meta"><div><div class="where">Johnson Electric</div><div class="role">Engineering Intern – Innovation Engineering · Calera, Zacatecas</div></div><div class="when">Jan 2026 — Jun 2026</div></div>
+                <ul><li>Developed a dynamometer project integrating mechanical, electronic and software systems.</li><li>Designed mechanical components using SolidWorks.</li><li>Developed and tested code for project systems.</li><li>Participated in multidisciplinary hardware and software integration.</li><li>Completed technical training through specialized Udemy courses focused on software development and engineering.</li></ul>
+              </div>
+            </div>
+          </section>
+
+          <section class="card" id="projects" style="margin-top:16px;">
+            <div class="inner">
+              <div class="section-title"><h2>Featured Projects</h2><small>Engineering portfolio</small></div>
+              <div class="rule"></div>
+              <div class="project-grid">
+                <div class="item"><div class="where">Smart Home Fire Detection and Control System</div><ul><li>Developed an IoT-based system for home fire monitoring and control.</li><li>Implemented cloud-connected sensors for continuous real-time data transmission.</li><li>Integrated SQL databases for data storage and processing.</li><li>Programmed a microcontroller for automatic decision-making and system response activation.</li></ul></div>
+                <div class="item"><div class="where">Physical Activity Monitoring System with Artificial Intelligence</div><ul><li>Developed and implemented an AI model for physical activity recognition.</li><li>Trained a model capable of identifying walking, running and stair climbing.</li><li>Integrated X, Y and Z-axis motion sensors with a microcontroller.</li><li>Estimated steps and floors climbed through motion data processing.</li></ul></div>
+                <div class="item"><div class="where">Fixture Design for Assembly Validation</div><ul><li>Designed and developed a mechanical fixture for assembly distance validation.</li><li>Project developed for the process engineering area at Johnson Electric.</li><li>Created mechanical models and designs using SolidWorks.</li><li>Focused on dimensional validation and industrial process improvement.</li></ul></div>
+                <div class="item"><div class="where">Dynamometer Development Project</div><ul><li>Integrated mechanical, electronic and software areas for measurement and validation.</li><li>Worked on CAD design, code development and system testing.</li><li>Collaborated on hardware/software integration for engineering applications.</li></ul></div>
+              </div>
+            </div>
+          </section>
+        </main>
+
+        <aside>
+          <section class="card" id="skills">
+            <div class="inner">
+              <div class="section-title"><h2>Technical Skills</h2><small>Toolset</small></div><div class="rule"></div>
+              <div class="cols">
+                <div class="mini"><b>Programming</b>Python, MicroPython, C, C++, Verilog (FPGA), HTML</div>
+                <div class="mini"><b>Embedded / Control</b>Microcontrollers, Sensors, Actuators, Node-RED, Edge Impulse</div>
+                <div class="mini"><b>CAD / Electronics</b>AutoCAD, SolidWorks, Altium Designer, Proteus</div>
+                <div class="mini"><b>Tools / Cloud</b>Visual Studio, Microsoft Office, MATLAB, Microsoft Azure, Git / GitHub</div>
+              </div>
+              <div class="rule"></div><div class="section-title"><h2>Education</h2><small>Academic background</small></div>
+              <div class="item"><div class="where">Autonomous University of Zacatecas</div><div class="role">Bachelor’s Degree in Robotics and Mechatronics Engineering</div><div class="when">2021 — 2026 · Degree in process</div></div>
+              <div class="rule"></div><div class="section-title"><h2>Certifications</h2><small>Selected</small></div>
+              <div class="item"><ul><li>Advanced Course in Applied Robotics — STPS Certified</li><li>Excellence Diploma</li><li>Python Course — STPS Certified</li><li>Google AI Essentials — Coursera</li></ul></div>
+              <div class="rule"></div><div class="section-title"><h2>Languages</h2><small>Proficiency</small></div>
+              <div class="cols"><div class="mini"><b>Spanish</b>Native</div><div class="mini"><b>English</b>Intermediate (B2)</div></div>
+            </div>
+          </section>
+        </aside>
+      </div>
+    </div>
+
+    <div data-lang="es">
+      <div class="grid">
+        <main>
+          <section class="card" id="experience-es">
+            <div class="inner">
+              <div class="section-title"><h2>Experiencia Profesional</h2><small>Trabajo práctico</small></div><div class="rule"></div>
+              <div class="item"><div class="meta"><div><div class="where">Labsol (Laboratorio de Software Libre)</div><div class="role">Desarrollo de Proyecto Robótico – Servicio Social · Zacatecas, Zacatecas</div></div><div class="when">Oct 2024 — May 2025</div></div><ul><li>Desarrollo de un proyecto robótico para el Laboratorio de Software Libre.</li><li>Implementación de una carrera interactiva de LEDs RGB utilizando bicicletas estáticas mediante señales obtenidas de un encoder.</li><li>Integración de sensores, microcontroladores y programación para control en tiempo real.</li></ul></div>
+              <div class="item"><div class="meta"><div><div class="where">VEIMAZ (Taller de Maquinaria Agrícola)</div><div class="role">Full Stack Developer – Ingeniería y Automatización · Sombrerete, Zacatecas</div></div><div class="when">May 2025 — Ago 2025</div></div><ul><li>Operación y control de máquina CNC de corte plasma.</li><li>Diseño de piezas mecánicas y trayectorias de corte en AutoCAD.</li><li>Participación en procesos de automatización y manufactura.</li></ul></div>
+              <div class="item"><div class="meta"><div><div class="where">Johnson Electric</div><div class="role">Engineering Intern – Ingeniería en Innovación · Calera, Zacatecas</div></div><div class="when">Ene 2026 — Jun 2026</div></div><ul><li>Desarrollo de un proyecto de dinamómetro integrando áreas mecánicas, electrónicas y de software.</li><li>Diseño de componentes mecánicos en SolidWorks.</li><li>Desarrollo y pruebas de código para sistemas del proyecto.</li><li>Participación en integración multidisciplinaria de hardware y software.</li><li>Capacitación técnica mediante cursos especializados de Udemy enfocados en desarrollo de software e ingeniería.</li></ul></div>
+            </div>
+          </section>
+
+          <section class="card" id="projects-es" style="margin-top:16px;">
+            <div class="inner">
+              <div class="section-title"><h2>Proyectos Destacados</h2><small>Portafolio de ingeniería</small></div><div class="rule"></div>
+              <div class="project-grid">
+                <div class="item"><div class="where">Sistema Inteligente de Detección y Control de Incendios en el Hogar</div><ul><li>Desarrollo de un sistema IoT para monitoreo y control de incendios domésticos.</li><li>Implementación de sensores conectados a la nube para envío continuo de datos en tiempo real.</li><li>Integración de base de datos SQL para almacenamiento y procesamiento de información.</li><li>Programación de microcontrolador para toma automática de decisiones y activación de respuestas del sistema.</li></ul></div>
+                <div class="item"><div class="where">Sistema de Monitoreo de Actividad Física con Inteligencia Artificial</div><ul><li>Desarrollo e implementación de un modelo de inteligencia artificial para reconocimiento de actividad física.</li><li>Entrenamiento de modelo capaz de identificar caminar, correr y subir escaleras.</li><li>Integración de sensores de movimiento en ejes X, Y y Z con microcontrolador.</li><li>Estimación de pasos y pisos recorridos mediante procesamiento de datos de movimiento.</li></ul></div>
+                <div class="item"><div class="where">Diseño de Fixtura para Validación de Ensamble</div><ul><li>Diseño y desarrollo de una fixtura mecánica para validación de distancia en procesos de ensamble.</li><li>Proyecto desarrollado para el área de procesos en Johnson Electric.</li><li>Modelado y diseño mecánico utilizando SolidWorks.</li><li>Enfoque en validación dimensional y mejora de procesos industriales.</li></ul></div>
+                <div class="item"><div class="where">Proyecto de Desarrollo de Dinamómetro</div><ul><li>Integración de áreas mecánicas, electrónicas y de software para medición y validación.</li><li>Trabajo en diseño CAD, desarrollo de código y pruebas del sistema.</li><li>Colaboración en integración de hardware y software para aplicaciones de ingeniería.</li></ul></div>
+              </div>
+            </div>
+          </section>
+        </main>
+
+        <aside>
+          <section class="card" id="skills-es">
+            <div class="inner">
+              <div class="section-title"><h2>Habilidades Técnicas</h2><small>Herramientas</small></div><div class="rule"></div>
+              <div class="cols"><div class="mini"><b>Programación</b>Python, MicroPython, C, C++, Verilog (FPGA), HTML</div><div class="mini"><b>Embebidos / Control</b>Microcontroladores, sensores, actuadores, Node-RED, Edge Impulse</div><div class="mini"><b>CAD / Electrónica</b>AutoCAD, SolidWorks, Altium Designer, Proteus</div><div class="mini"><b>Herramientas / Nube</b>Visual Studio, Microsoft Office, MATLAB, Microsoft Azure, Git / GitHub</div></div>
+              <div class="rule"></div><div class="section-title"><h2>Educación</h2><small>Formación</small></div>
+              <div class="item"><div class="where">Universidad Autónoma de Zacatecas</div><div class="role">Ingeniería en Robótica y Mecatrónica</div><div class="when">2021 — 2026 · Título en trámite</div></div>
+              <div class="rule"></div><div class="section-title"><h2>Certificaciones</h2><small>Selección</small></div>
+              <div class="item"><ul><li>Curso avanzado en robótica aplicada — Certificado por la STPS</li><li>Diploma de excelencia</li><li>Curso de Python — Certificado por la STPS</li><li>Google AI Essentials — Coursera</li></ul></div>
+              <div class="rule"></div><div class="section-title"><h2>Idiomas</h2><small>Nivel</small></div>
+              <div class="cols"><div class="mini"><b>Español</b>Nativo</div><div class="mini"><b>Inglés</b>Intermedio (B2)</div></div>
+            </div>
+          </section>
+        </aside>
+      </div>
+    </div>
+
+    <footer>© 2026 María Esther Hernández Ortega · Digital Engineering CV</footer>
+  </div>
+
+  <script>
+    const langBtn=document.getElementById('langBtn');
+    const blocks=Array.from(document.querySelectorAll('[data-lang]'));
+    const summaries=Array.from(document.querySelectorAll('[data-lang-summary]'));
+    function setLang(lang){
+      blocks.forEach(b=>b.classList.toggle('active', b.getAttribute('data-lang')===lang));
+      summaries.forEach(s=>s.style.display=s.getAttribute('data-lang-summary')===lang?'block':'none');
+      document.documentElement.lang=lang;
+      langBtn.textContent=lang==='en'?'🌐 EN':'🌐 ES';
+      langBtn.setAttribute('aria-label', lang==='en'?'Switch language to Spanish':'Cambiar idioma a inglés');
+      localStorage.setItem('cv_lang', lang);
+    }
+    setLang(localStorage.getItem('cv_lang')==='es'?'es':'en');
+    langBtn.addEventListener('click',()=>setLang((document.documentElement.lang||'en')==='en'?'es':'en'));
+    function goTo(section){
+      const lang=document.documentElement.lang||'en';
+      const id=lang==='es'?`${section}-es`:section;
+      const el=document.getElementById(id);
+      if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+    }
+  </script>
+</body>
+</html>
